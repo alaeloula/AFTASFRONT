@@ -1,0 +1,52 @@
+<button
+    class=" block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    type="button" (click)="toggleForm()">
+    <fa-icon [icon]="faplus"></fa-icon>
+</button>
+<div *ngIf="formShow" tabindex="-1" aria-hidden="true" class="">
+    <form class="max-w-sm mx-auto" (ngSubmit)="onSubmit()">
+        <div class="mb-5">
+            <label for="date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date
+                competition</label>
+            <input type="date" id="date" name="date" [(ngModel)]="date"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="name@flowbite.com" required>
+        </div>
+        <div class="mb-5">
+            <label for="startTime"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">startTime</label>
+            <input type="time" id="startTime" name="startTime" [(ngModel)]="startTime"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required>
+        </div>
+        <div class="mb-5">
+            <label for="endTime" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">endTime</label>
+            <input type="time" id="endTime" name="endTime" [(ngModel)]="endTime"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required>
+        </div>
+        <div class="mb-5">
+            <label for="location" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">location</label>
+            <input type="text" id="location" name="location" [(ngModel)]="location"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="location" required>
+        </div>
+        <div class="mb-5">
+            <label for="numberOfParticipation"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">numberOfParticipation</label>
+            <input type="number" min="1" id="numberOfParticipation" name="numberOfParticipation" [(ngModel)]="numberOfParticipation"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="numberOfParticipation" required>
+        </div>
+        <div class="mb-5">
+            <label for="amount"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">amount</label>
+            <input type="number" min="1" id="amount" name="amount" [(ngModel)]="amount"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="amount" required>
+        </div>
+        <button type="submit"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+    </form>
+
+</div>

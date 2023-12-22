@@ -1,0 +1,73 @@
+<div class="containner">
+    <app-add-competition (onAddCompetition)="addCompetition($event)"></app-add-competition>
+
+
+    <label for="filtre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
+    <select id="filtre"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        (change)="onFilterChange($event)">
+        <option selected value="all">Choisissez un filtre</option>
+        <option value="enCours">en cours</option>
+        <option value="ferme">ferme</option>
+    </select>
+
+
+
+    <h4 class="font-medium mb-3">Competition</h4>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div *ngFor="let competition of competitions" class="col-lg-3 col-md-6">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img class="w-full h-48 object-cover object-center" src="assets/images/ansa.jpeg"
+                    alt="Card image cap" />
+                <div class="p-4">
+                    <h4 class="text-lg font-semibold mb-2"></h4>
+                    <p class="text-gray-700"> {{competition.location}} {{competition.date}}</p>
+                    <p class="text-gray-700"> {{competition.startTime}} {{competition.endTime}} </p>
+                    <a routerLink="/addranking/{{competition.code}}"
+                        class="inline-block mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav class="bg-white shadow-md rounded-md flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4"
+    aria-label="Table navigation">
+    <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
+        Current Page :
+        <span class="font-semibold text-gray-900 dark:text-white">{{ currentPage+1 }}</span>
+    </span>
+    <ul class="inline-flex items-stretch -space-x-px">
+        <li>
+            <button (click)="previousPage(currentPage)"
+                class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                <span class="sr-only">Previous</span>
+                <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                        clip-rule="evenodd" />
+                </svg>
+            </button>
+        </li>
+        <div *ngFor="let i of [].constructor(totalPages); let page = index">
+            <li>
+                <button (click)="paginate(page)"
+                    class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{{page+1}}</button>
+            </li>
+        </div>
+        <li>
+            <button (click)="nextPage(currentPage)"
+                class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                <span class="sr-only">Next</span>
+                <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd" />
+                </svg>
+            </button>
+        </li>
+    </ul>
+</nav>
